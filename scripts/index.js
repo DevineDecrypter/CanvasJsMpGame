@@ -37,26 +37,27 @@ store.gameArea = {
 
 
 // -----------------------------------------------------------
-const player = {
-    nickname: 'mamad',
-    name: '',
-    color: '',
-    position: ''
-}
+// const player = {
+//     nickname: 'mamad',
+//     name: '',
+//     color: '',
+//     position: ''
+// }
 
-store.mp.players = []
-socket.on("syncPlayers", (players) => {
-    for (const playerData of players) {
-        const enemyPlayer = new enemy(playerData)
-        store.mp.players.push(enemyPlayer)
-    }
-});
+// store.mp.players = []
+// socket.on("syncPlayers", (players) => {
+//     for (const playerData of players) {
+//         const enemyPlayer = new enemy(playerData)
+//         store.mp.players.push(enemyPlayer)
+//     }
+// });
 
-socket.emit('joinGame', player);
+// socket.emit('joinGame', player);
 
 console.log("Starting game...");
 store.gameArea.start();
-// const amir = new player("Amir")
+const amir = new player("Amir")
+const mamad = new player("Mamad")
 new shield();
 new bulletBuff();
 // const trap = new tap()
