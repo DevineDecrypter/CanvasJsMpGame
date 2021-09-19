@@ -39,8 +39,10 @@ store.gameArea = {
 // -----------------------------------------------------------
 const player = {
     nickname: 'mamad',
+    name: '',
+    color: '',
+    position: ''
 }
-//instead use singlePlayer
 
 store.mp.players = []
 socket.on("syncPlayers", (players) => {
@@ -49,6 +51,8 @@ socket.on("syncPlayers", (players) => {
         store.mp.players.push(enemyPlayer)
     }
 });
+
+socket.emit('joinGame', player);
 
 console.log("Starting game...");
 store.gameArea.start();

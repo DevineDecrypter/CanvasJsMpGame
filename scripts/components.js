@@ -27,6 +27,10 @@ export const player = class {
             this.component.x += this.movement.xAxis() * this.movementSpeed;
             this.component.y += this.movement.yAxis() * this.movementSpeed;
 
+            if(this.movement.xAxis() != 0 ||this.movement.yAxis() != 0) {
+                // emit current pos
+            }
+
             this.component.hp = this.hp;
             this.component.update();
         }
@@ -234,7 +238,7 @@ export const bulletBuff = class {
 };
 
 export const enemy = class {
-    constructor(playerData, ) {
+    constructor(playerData) {
         this.type = "enemy";
         this.name = playerData.name;
         this.hp = 100;
@@ -251,20 +255,18 @@ export const enemy = class {
     }
 
     updateEnemy(data) {
-
+        // this.hp = data.hp;
+        // this.damage = data.damage;
+        // this.shield = data.shield;
+        // this.bulletBuff = data.bulletBuff;
+        // this.movementSpeed = data.movementSpeed;
+        // this.dead = data.dead;
     }
 
-    tick() {
-        if (store.gameArea.components.enemies.filter((player) => player.name == this.name).length > 0) {
-            this.dead = false;
-        }
-        if (!this.dead) {
-            this.component.x += this.movement.xAxis() * this.movementSpeed;
-            this.component.y += this.movement.yAxis() * this.movementSpeed;
-
-            this.component.hp = this.hp;
-            this.component.update();
-        }
+    updatePosition(pos) {
+        this.component.x += this.movement.xAxis() * this.movementSpeed;
+        this.component.y += this.movement.yAxis() * this.movementSpeed;
+        this.component.update();
 
         this.checkCollisions()
     }
